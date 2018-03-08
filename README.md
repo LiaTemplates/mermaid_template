@@ -53,12 +53,12 @@ Template for including mermaidJS graphs into LiaScript
 <script>
   var elem = document.getElementById("id");
 
-  mermaid.initialize({startOnLoad:true});
+  mermaid.initialize({});
 
   var graphDefinition = `graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n`;
   var cb = function(svgCode) {
       elem.innerHTML = svgCode;
-
+      elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
   }
   mermaid.render(elem.id,graphDefinition,cb);
 </script>
