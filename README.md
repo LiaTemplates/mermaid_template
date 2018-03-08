@@ -3,23 +3,22 @@
 author:   André Dietrich
 email:    andre.dietrich@ovgu.de
 version:  1.0.0
-language: de_DE
-narrator: Deutsch Female
+language: en_US
+narrator: US English Female
 
 script:   https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
 
 @mermaid
 <script>
-  var elem = document.getElementById("id@0");
+  mermaid.initialize({});
 
-  mermaid.initialize({startOnLoad:true});
-
-  var graphDefinition = `@1`;
-  var cb = function(svgCode) {
-      elem.innerHTML = svgCode;
-      elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
-  }
-  mermaid.render(elem.id,graphDefinition,cb);
+  mermaid.render("id@0",
+                 `@1`,
+                 function(svgCode) {
+                     var elem = document.getElementById("id@0");
+                     elem.innerHTML = svgCode;
+                     elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
+                 });
 </script>
 <span class="mermaid" id="id@0"></span>
 @end
@@ -44,28 +43,50 @@ mermaid.render('id@0',graphDefinition,cb)
 
 # mermaid_template
 
-Template for including mermaidJS graphs into LiaScript
+                               --{{0}}--
+This is a simple template for including [mermaidJS](https://github.com/knsv/mermaid)
+graphs into LiaScript.
+
+* See the mermaid docs [here...](https://mermaidjs.github.io/)
+* See the Github version of this document [here...](https://mermaidjs.github.io/)
+* See the LiaScript version of this document [here...](https://mermaidjs.github.io/)
+
+__Overview:__
+
+1. Use plain HTML
+2. Use the inline Macro to generate graphs
+3. Use the Block-Macro notation
+4. Dynamically generate graphs
 
 ## Plain - HTML
+
+                              --{{0}}--
+If you are on github, you should see some odd looking code here, in contrast to
+LiaScript which tries to execute also JavaScript code.
 
 <link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
 
 <script>
-  var elem = document.getElementById("id");
-
   mermaid.initialize({});
 
-  var graphDefinition = `graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n`;
-  var cb = function(svgCode) {
-      elem.innerHTML = svgCode;
-      elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
-  }
-  mermaid.render(elem.id,graphDefinition,cb);
+  mermaid.render("id",
+                 `graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n`,
+                 function(svgCode) {
+                     //console.log(svgCode);
+                     var elem = document.getElementById("id");
+                     elem.innerHTML = svgCode;
+                     elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
+                 });
 </script>
 <span class="mermaid" id="id"></span>
 
 
 ## Inline
+
+                              --{{0}}--
+To simplify the usage of JavaScript libraries, LiaScript allowes to define
+macros, which allow to inject code during the parsing process. The following
+macro, generates exactly the same graph as the previous example.
 
 <link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
 
@@ -73,6 +94,10 @@ Template for including mermaidJS graphs into LiaScript
 
 
 ## Code-Block
+
+                              --{{0}}--
+For more complex examples you can also use the block-code notation, that results
+in a nicely rendered code on github, but on LiaScript it is converted to a graph.
 
 <link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
 
@@ -92,10 +117,12 @@ graph TB
     end
 ```
 
-sss
-
 ## Interactive
 
+                              --{{0}}--
+If you want to have an editable version of mermaid graphs, use the following
+example. Simply double-click on the code to edit it and execute it by clicking
+on the play-button.
 
 ```js
 sequenceDiagram
@@ -105,5 +132,3 @@ sequenceDiagram
     John-->>-Alice: I feel great!
 ```
 @mermaid_eval(3)
-
-
