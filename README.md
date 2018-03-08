@@ -48,8 +48,8 @@ This is a simple template for including [mermaidJS](https://github.com/knsv/merm
 graphs into LiaScript.
 
 * See the mermaid docs [here...](https://mermaidjs.github.io/)
-* See the Github version of this document [here...](https://mermaidjs.github.io/)
-* See the LiaScript version of this document [here...](https://mermaidjs.github.io/)
+* See the Github version of this document [here...](https://github.com/liaScript/mermaid_template)
+* See the LiaScript version of this document [here...](https://liascript.github.io/?https://raw.githubusercontent.com/liaScript/mermaid_template/master/README.md)
 
 __Overview:__
 
