@@ -44,11 +44,9 @@ mermaid.render('id@0',graphDefinition,cb)
 
 # mermaid_template
 
-# mermaid_template
-
 Template for including mermaidJS graphs into LiaScript
 
-# Plain - HTML
+## Plain - HTML
 
 <link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
 
