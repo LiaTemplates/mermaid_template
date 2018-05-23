@@ -3,7 +3,7 @@
 author:   André Dietrich
 email:    andre.dietrich@ovgu.de
 version:  1.0.0
-language: en_US
+language: en
 narrator: US English Female
 
 script:   https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
