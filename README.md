@@ -31,7 +31,7 @@ if(elem != null)
   elem.remove();
 
 mermaid.initialize({});
-var graphDefinition = `@file(0)`
+var graphDefinition = `@code`
 var cb = function(svgGraph) {
     return true;
 }
