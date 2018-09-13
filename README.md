@@ -6,6 +6,8 @@ version:  1.0.0
 language: en
 narrator: US English Female
 
+link:     https://unpkg.com/mermaid@7.1.0/dist/mermaid.css
+
 script:   https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
 
 @mermaid
@@ -31,7 +33,7 @@ if(elem != null)
   elem.remove();
 
 mermaid.initialize({});
-var graphDefinition = `@code`
+var graphDefinition = `@input`
 var cb = function(svgGraph) {
     return true;
 }
@@ -64,8 +66,6 @@ __Overview:__
 If you are on github, you should see some odd looking code here, in contrast to
 LiaScript which tries to execute also JavaScript code.
 
-<link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
-
 <script>
   mermaid.initialize({});
 
@@ -88,8 +88,6 @@ To simplify the usage of JavaScript libraries, LiaScript allowes to define
 macros, which allow to inject code during the parsing process. The following
 macro, generates exactly the same graph as the previous example.
 
-<link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
-
 @mermaid(1,`graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n`)
 
 
@@ -99,9 +97,7 @@ macro, generates exactly the same graph as the previous example.
 For more complex examples you can also use the block-code notation, that results
 in a nicely rendered code on github, but on LiaScript it is converted to a graph.
 
-<link rel="stylesheet" href="https://unpkg.com/mermaid@7.1.0/dist/mermaid.css">
-
-```js
+```text
 @mermaid(2)
 
 graph TB
@@ -124,7 +120,7 @@ If you want to have an editable version of mermaid graphs, use the following
 example. Simply double-click on the code to edit it and execute it by clicking
 on the play-button.
 
-```js
+```text
 sequenceDiagram
     Alice->>+John: Hello John, how are you?
     Alice->>+John: John, can you hear me?
