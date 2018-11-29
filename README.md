@@ -29,9 +29,6 @@ script:   https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
 <script>
 var elem = document.getElementById('id@0');
 
-if(elem != null)
-  elem.remove();
-
 mermaid.initialize({});
 var graphDefinition = `@input`
 var cb = function(svgGraph) {
@@ -39,6 +36,8 @@ var cb = function(svgGraph) {
 }
 mermaid.render('id@0',graphDefinition,cb)
 </script>
+
+<div id="id@0"></div>
 @end
 
 -->
@@ -97,9 +96,7 @@ macro, generates exactly the same graph as the previous example.
 For more complex examples you can also use the block-code notation, that results
 in a nicely rendered code on github, but on LiaScript it is converted to a graph.
 
-```text
-@mermaid(2)
-
+```text @mermaid(2)
 graph TB
     c1-->a2
     subgraph one
