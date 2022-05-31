@@ -1,43 +1,40 @@
 <!--
 
 author:   André Dietrich
-email:    andre.dietrich@ovgu.de
-version:  1.0.0
+email:    LiaScript@web.de
+version:  0.1.0
 language: en
 narrator: US English Female
 
-link:     https://unpkg.com/mermaid@7.1.0/dist/mermaid.css
+script:   https://unpkg.com/mermaid@9.1.1/dist/mermaid.min.js
 
-script:   https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js
 
 @mermaid
-<script>
-  mermaid.initialize({});
+<script run-once="true" modify="false">
+mermaid.initialize({});
 
-  mermaid.render("id@0",
-                 `@1`,
-                 function(svgCode) {
-                     var elem = document.getElementById("id@0");
-                     elem.innerHTML = svgCode;
-                     elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
-                 });
+var svg = mermaid.render('io9wuwzxt',`@0`.replace(/\\n/g, "\n"),
+function(g) {
+    return true;
+})
+
+"HTML: " + svg
 </script>
-<span class="mermaid" id="id@0"></span>
 @end
+
 
 @mermaid_eval
 <script>
-var elem = document.getElementById('id@0');
-
 mermaid.initialize({});
 var graphDefinition = `@input`
 var cb = function(svgGraph) {
     return true;
 }
-mermaid.render('id@0',graphDefinition,cb)
-</script>
 
-<div id="id@0"></div>
+var svg = mermaid.render('io9wuwzxt',graphDefinition,cb)
+console.html(svg)
+"LIA: stop"
+</script>
 @end
 
 -->
@@ -65,29 +62,36 @@ __Overview:__
 If you are on github, you should see some odd looking code here, in contrast to
 LiaScript which tries to execute also JavaScript code.
 
-<script>
-  mermaid.initialize({});
+<script style="display: block" run-once="true" modify="false">
+mermaid.initialize({});
 
-  mermaid.render("id",
-                 `graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n`,
-                 function(svgCode) {
-                     //console.log(svgCode);
-                     var elem = document.getElementById("id");
-                     elem.innerHTML = svgCode;
-                     elem.firstChild.style.height = elem.getAttribute('viewbox').split(' ')[3] + 'px';
-                 });
+var svg = mermaid.render(
+'io9wuwzxt',
+`journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 5: Me`,
+function(g) {
+    return true;
+})
+
+"HTML: " + svg
 </script>
-<span class="mermaid" id="id"></span>
 
 
 ## Inline
 
                               --{{0}}--
-To simplify the usage of JavaScript libraries, LiaScript allowes to define
+To simplify the usage of JavaScript libraries, LiaScript allows to define
 macros, which allow to inject code during the parsing process. The following
 macro, generates exactly the same graph as the previous example.
 
-@mermaid(1,`graph TD\nA-->B\nA-->C\nB-->D\nD-->A\n`)
+@mermaid(`flowchart LR\nid1(This is the text in the box)`)
 
 
 ## Code-Block
@@ -96,18 +100,12 @@ macro, generates exactly the same graph as the previous example.
 For more complex examples you can also use the block-code notation, that results
 in a nicely rendered code on github, but on LiaScript it is converted to a graph.
 
-```text @mermaid(2)
-graph TB
-    c1-->a2
-    subgraph one
-    a1-->a2
-    end
-    subgraph two
-    b1-->b2
-    end
-    subgraph three
-    c1-->c2
-    end
+```text @mermaid
+graph TD
+  A-->B
+  A-->C
+  B-->D
+  D-->A
 ```
 
 ## Interactive
@@ -124,4 +122,4 @@ sequenceDiagram
     John-->>-Alice: Hi Alice, I can hear you!
     John-->>-Alice: I feel great!
 ```
-@mermaid_eval(3)
+@mermaid_eval
