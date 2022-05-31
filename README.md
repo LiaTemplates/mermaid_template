@@ -57,7 +57,7 @@ Which will be updated and might come with breaking changes:
 
 or use this specific version and you course will be stable:
 
-`import: https://raw.githubusercontent.com/liaScript/mermaid_template/master/README.md`
+`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.0/README.md`
 
 
 __Overview:__
