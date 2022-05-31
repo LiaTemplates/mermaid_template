@@ -49,12 +49,23 @@ graphs into LiaScript.
 * See the Github version of this document [here...](https://github.com/liaScript/mermaid_template)
 * See the LiaScript version of this document [here...](https://liascript.github.io/?https://raw.githubusercontent.com/liaScript/mermaid_template/master/README.md)
 
+To use these macros within your document, simply import it into LiaScript via:
+
+Which will be updated and might come with breaking changes:
+
+`import: https://raw.githubusercontent.com/liaScript/mermaid_template/master/README.md`
+
+or use this specific version and you course will be stable:
+
+`import: https://raw.githubusercontent.com/liaScript/mermaid_template/master/README.md`
+
+
 __Overview:__
 
-1. Use plain HTML
-2. Use the inline Macro to generate graphs
-3. Use the Block-Macro notation
-4. Dynamically generate graphs
+1. Use plain LiaScript-HTML
+2. Use the inline Macro to generate graphs `@mermaid`
+3. Use the Block-Macro notation `@mermaid`
+4. Dynamically generate graphs `@mermaid_eval`
 
 ## Plain - HTML
 
