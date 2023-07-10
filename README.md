@@ -2,11 +2,11 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  0.1.1
+version:  0.1.2
 language: en
 narrator: US English Female
 
-script:   https://unpkg.com/mermaid@9.1.1/dist/mermaid.min.js
+script:   https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js
 
 
 @mermaid: @mermaid_(@uid,```@0```)
@@ -63,7 +63,7 @@ Which will be updated and might come with breaking changes:
 
 or use this specific version and you course will be stable:
 
-`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.1/README.md`
+`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.2/README.md`
 
 
 __Overview:__
