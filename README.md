@@ -2,28 +2,34 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  0.1.0
+version:  0.1.1
 language: en
 narrator: US English Female
 
 script:   https://unpkg.com/mermaid@9.1.1/dist/mermaid.min.js
 
 
-@mermaid
+@mermaid: @mermaid_(@uid,```@0```)
+
+@mermaid_
 <script run-once="true" modify="false">
 mermaid.initialize({});
 
-var svg = mermaid.render('io9wuwzxt',`@0`.replace(/\\n/g, "\n"),
+window.console.warn(`@1`.replace(/\\n/g, `
+`))
+
+var svg = mermaid.render('io9wuwzxt_@0',`@1`.replace(/\n/g, "\n"),
 function(g) {
     return true;
 })
 
-"HTML: " + svg
+"HTML: <span style='display: inline-block; background: white'>" + svg + "</span>"
 </script>
 @end
 
+@mermaid_eval: @mermaid_eval_(@uid)
 
-@mermaid_eval
+@mermaid_eval_
 <script>
 mermaid.initialize({});
 var graphDefinition = `@input`
@@ -31,7 +37,7 @@ var cb = function(svgGraph) {
     return true;
 }
 
-var svg = mermaid.render('io9wuwzxt',graphDefinition,cb)
+var svg = mermaid.render('io9wuwzxt@0',graphDefinition,cb)
 console.html(svg)
 "LIA: stop"
 </script>
@@ -57,7 +63,7 @@ Which will be updated and might come with breaking changes:
 
 or use this specific version and you course will be stable:
 
-`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.0/README.md`
+`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.1/README.md`
 
 
 __Overview:__
@@ -73,7 +79,7 @@ __Overview:__
 If you are on github, you should see some odd looking code here, in contrast to
 LiaScript which tries to execute also JavaScript code.
 
-<script style="display: block" run-once="true" modify="false">
+<script style="display: block; background: white" run-once="true" modify="false">
 mermaid.initialize({});
 
 var svg = mermaid.render(
@@ -102,7 +108,8 @@ To simplify the usage of JavaScript libraries, LiaScript allows to define
 macros, which allow to inject code during the parsing process. The following
 macro, generates exactly the same graph as the previous example.
 
-@mermaid(`flowchart LR\nid1(This is the text in the box)`)
+@mermaid(```flowchart LR
+id1(This is the text in the box)```)
 
 
 ## Code-Block
@@ -111,7 +118,7 @@ macro, generates exactly the same graph as the previous example.
 For more complex examples you can also use the block-code notation, that results
 in a nicely rendered code on github, but on LiaScript it is converted to a graph.
 
-```text @mermaid
+```mermaid @mermaid
 graph TD
   A-->B
   A-->C
@@ -126,7 +133,7 @@ If you want to have an editable version of mermaid graphs, use the following
 example. Simply double-click on the code to edit it and execute it by clicking
 on the play-button.
 
-```text
+```mermaid
 sequenceDiagram
     Alice->>+John: Hello John, how are you?
     Alice->>+John: John, can you hear me?
