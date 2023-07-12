@@ -2,7 +2,7 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  0.1.2
+version:  0.1.3
 language: en
 narrator: US English Female
 
@@ -12,7 +12,7 @@ script:   https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js
 @mermaid: @mermaid_(@uid,```@0```)
 
 @mermaid_
-<script run-once="true" modify="false">
+<script run-once="true" modify="false" style="display:block; background: white">
 mermaid.initialize({});
 
 window.console.warn(`@1`.replace(/\\n/g, `
@@ -23,7 +23,7 @@ function(g) {
     return true;
 })
 
-"HTML: <span style='display: inline-block; background: white'>" + svg + "</span>"
+"HTML:" + svg
 </script>
 @end
 
@@ -63,7 +63,7 @@ Which will be updated and might come with breaking changes:
 
 or use this specific version and you course will be stable:
 
-`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.2/README.md`
+`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.3/README.md`
 
 
 __Overview:__
@@ -125,6 +125,65 @@ graph TD
   B-->D
   D-->A
 ```
+
+```text @mermaid
+flowchart TB
+    classDef someclass fill:#f96;
+    A[Concrete] --> B
+    A:::someclass --> C
+    C[Language] --> V[Words]
+    C --> W[Interaction]
+    V --> I[Etymology]
+    I --> AD[com lat. = together]
+    AD:::someclass --> AK
+    I --> AE(cretus lat. = grown)
+    AE:::someclass --> AK[grown together]
+    AK:::someclass
+    
+    V --> J[Collocations]
+    J --> I
+    J --> reinforced:::someclass 
+    P --> R[Processes]
+    R --> AK
+    R --> AP[Inputs & Outputs]
+    W --> P[Describing]
+    J --> P
+    W --> Q[Discussing]
+    Q --> AG[Argumentation]
+    AG --> AP
+    AP --> S[Presentations]
+    AP --> AQ[Texts]
+    AQ <--> AR[Concept maps]
+    S --> AI
+    S <--> AR
+    
+    B[Subject] --> D[Composition]
+    D --> N[Aggregate]:::someclass 
+    D --> O[Cement]:::someclass 
+    B --> E[Production]
+    E --> L[Mixing]:::someclass 
+    E --> M[Curing]:::someclass 
+    B --> F[Structure]
+    F --> AA[Homogeneity]:::someclass 
+    F --> AB[Porosity]:::someclass 
+    B --> G[Properties]
+    G --> X[high compressive strength]:::someclass 
+    G --> Y[Water resistant]:::someclass 
+    B --> H[Applications]
+    H --> Z[Dams]:::someclass 
+    H --> AC[Furnaces]:::someclass 
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    B --> AH
+    H --> AH[Impacts]
+    AH --> AJ[Economic]:::someclass    
+    AH --> AI[Environmental]:::someclass 
+    X --> Z
+    Y --> Z
+```
+
 
 ## Interactive
 
