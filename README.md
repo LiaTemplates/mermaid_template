@@ -2,28 +2,30 @@
 
 author:   André Dietrich
 email:    LiaScript@web.de
-version:  0.1.3
+version:  0.1.4
 language: en
 narrator: US English Female
 
-script:   https://cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js
+script:   https://cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js
 
+
+@onload
+mermaid.initialize({ startOnLoad: false });
+@end
 
 @mermaid: @mermaid_(@uid,```@0```)
 
 @mermaid_
 <script run-once="true" modify="false" style="display:block; background: white">
-mermaid.initialize({});
+async function draw () {
+    const graphDefinition = `@1`;
+    const { svg } = await mermaid.render('graphDiv_@0', graphDefinition);
+    send.lia("HTML: "+svg);
+    send.lia("LIA: stop")
+};
 
-window.console.warn(`@1`.replace(/\\n/g, `
-`))
-
-var svg = mermaid.render('io9wuwzxt_@0',`@1`.replace(/\n/g, "\n"),
-function(g) {
-    return true;
-})
-
-"HTML:" + svg
+draw()
+"LIA: wait"
 </script>
 @end
 
@@ -31,21 +33,22 @@ function(g) {
 
 @mermaid_eval_
 <script>
-mermaid.initialize({});
-var graphDefinition = `@input`
-var cb = function(svgGraph) {
-    return true;
-}
+async function draw () {
+    const graphDefinition = `@input`;
+    const { svg } = await mermaid.render('graphDiv_@0', graphDefinition);
+    console.html(svg);
+    send.lia("LIA: stop")
+};
 
-var svg = mermaid.render('io9wuwzxt@0',graphDefinition,cb)
-console.html(svg)
-"LIA: stop"
+draw()
+"LIA: wait"
 </script>
 @end
 
 -->
 
 # mermaid_template
+
 
                                --{{0}}--
 This is a simple template for including [mermaidJS](https://github.com/knsv/mermaid)
@@ -63,7 +66,7 @@ Which will be updated and might come with breaking changes:
 
 or use this specific version and you course will be stable:
 
-`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.3/README.md`
+`import: https://raw.githubusercontent.com/LiaTemplates/mermaid_template/0.1.4/README.md`
 
 
 __Overview:__
@@ -80,11 +83,8 @@ If you are on github, you should see some odd looking code here, in contrast to
 LiaScript which tries to execute also JavaScript code.
 
 <script style="display: block; background: white" run-once="true" modify="false">
-mermaid.initialize({});
 
-var svg = mermaid.render(
-'io9wuwzxt',
-`journey
+const graphDefinition = `journey
     title My working day
     section Go to work
       Make tea: 5: Me
@@ -92,12 +92,16 @@ var svg = mermaid.render(
       Do work: 1: Me, Cat
     section Go home
       Go downstairs: 5: Me
-      Sit down: 5: Me`,
-function(g) {
-    return true;
-})
+      Sit down: 5: Me`;
 
-"HTML: " + svg
+async function draw () {
+    const { svg } = await mermaid.render('graphDiv', graphDefinition);
+    send.lia("HTML: "+svg);
+    send.lia("LIA: stop")
+};
+
+draw()
+"LIA: wait"
 </script>
 
 
@@ -126,7 +130,7 @@ graph TD
   D-->A
 ```
 
-```text @mermaid
+```mermaid @mermaid
 flowchart TB
     classDef someclass fill:#f96;
     A[Concrete] --> B
@@ -184,6 +188,7 @@ flowchart TB
     Y --> Z
 ```
 
+---
 
 ## Interactive
 
